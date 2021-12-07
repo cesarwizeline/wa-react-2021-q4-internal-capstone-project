@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ProductPrice,
-  ProductButton,
   ProductCardItem,
   ProductTitle,
 } from './ProductCard.styles';
+import AddToCart from '../AddToCart';
 
-export default function ProductCard({ id, name, price, mainimage, category }) {
+export default function ProductCard({ product }) {
+  console.log(product);
+  const {
+    id,
+    data: { name, mainimage, category, price, stock },
+  } = product;
   return (
     <ProductCardItem>
       <Link to={`/products/${id}`}>
@@ -16,7 +21,7 @@ export default function ProductCard({ id, name, price, mainimage, category }) {
         <div> {category.slug} </div>
         <ProductPrice> ${price} </ProductPrice>
       </Link>
-      <ProductButton> Add to Cart </ProductButton>
+      <AddToCart product={product} maxQuantity={stock} />
     </ProductCardItem>
   );
 }

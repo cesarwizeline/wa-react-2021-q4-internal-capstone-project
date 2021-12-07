@@ -9,19 +9,10 @@ export default function Products({ categoriesSelected }) {
   return (
     <ProductList>
       {isLoading && <Loading />}
-      {!isLoading && products.length === 0 && 'No products founded :( '}
+      {!isLoading && products.length === 0 && 'No products found :( '}
       {products &&
-        products.map(({ id, data: { name, mainimage, category, price } }) => {
-          return (
-            <ProductCard
-              key={id}
-              id={id}
-              name={name}
-              mainimage={mainimage}
-              category={category}
-              price={price}
-            />
-          );
+        products.map((product) => {
+          return <ProductCard product={product} />;
         })}
       <Pagination totalPages={totalPages} />
     </ProductList>

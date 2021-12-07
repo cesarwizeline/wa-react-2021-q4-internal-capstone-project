@@ -1,5 +1,5 @@
 import styles from './Slider.module.css';
-import useBanners from '../utils/hooks/useBanners';
+import useBanners from '../../utils/hooks/useBanners';
 export default function Slider() {
   const [imageSelected, featuredBanners] = useBanners();
 

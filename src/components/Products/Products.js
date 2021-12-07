@@ -1,13 +1,15 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 import { ProductList } from './Products.styles';
-import Pagination from '../components/Pagination';
-import { useProducts } from '../utils/hooks/useProducts';
+import Pagination from '../Pagination';
+import { useProducts } from '../../utils/hooks/useProducts';
+import Loading from '../Loading';
 export default function Products({ categoriesSelected }) {
-  const [products, totalPages] = useProducts(categoriesSelected);
-
+  const [products, totalPages, isLoading] = useProducts(categoriesSelected);
   return (
     <ProductList>
+      {isLoading && <Loading />}
+      {!isLoading && products.length === 0 && 'No products founded :( '}
       {products &&
         products.map(({ id, data: { name, mainimage, category, price } }) => {
           return (

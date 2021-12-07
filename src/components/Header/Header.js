@@ -6,9 +6,9 @@ import {
   MenuItem,
   ShowMenuBtn,
 } from './Header.styles';
-import SearchInput from './SearchInput';
-import ThemeContext from '../context/ThemeContext';
-import CartContext from '../context/CartContext';
+import SearchInput from '../SearchInput';
+import ThemeContext from '../../context/ThemeContext';
+import CartContext from '../../context/CartContext';
 import { HiShoppingCart } from 'react-icons/hi';
 import { ImMenu } from 'react-icons/im';
 import { Link } from 'react-router-dom';

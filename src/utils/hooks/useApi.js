@@ -19,7 +19,6 @@ export function useApi(documentType, elementsPerPage = 10, page = 1) {
     async function getDocumentType() {
       try {
         setResponse({ data: {}, isLoading: true });
-
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
             '[[at(document.type, "' + documentType + '")]]'

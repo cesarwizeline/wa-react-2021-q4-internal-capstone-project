@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { AddToCartButton } from './AddToCart.styles.js';
-import useAddToCart from '../utils/hooks/useAddToCart.js';
-import CartContext from '../context/CartContext';
-import QuantitySelector from './QuantitySelector.js';
-const AddToCart = ({ product, maxQuantity = 1 }) => {
+import useAddToCart from '../../utils/hooks/useAddToCart';
+import CartContext from '../../context/CartContext';
+import QuantitySelector from '../QuantitySelector';
+export const AddToCart = ({ product, maxQuantity = 1 }) => {
   const { addProduct } = useContext(CartContext);
 
   const [reduceHandler, increaseHandler, quantity] = useAddToCart();

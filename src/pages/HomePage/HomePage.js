@@ -4,7 +4,7 @@ import Categories from '../../components/Categories';
 import Products from '../../components/Products';
 import Slider from '../../components/Slider';
 import { ButtonPrimary } from './HomePage.style';
-export default function HomePage() {
+const HomePage = () => {
   return (
     <>
       <Slider />
@@ -15,4 +15,5 @@ export default function HomePage() {
       </ButtonPrimary>
     </>
   );
-}
+};
+export default HomePage;

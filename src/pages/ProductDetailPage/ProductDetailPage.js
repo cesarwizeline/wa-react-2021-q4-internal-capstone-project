@@ -16,7 +16,7 @@ import {
 } from './ProductDetailPage.style';
 import AddToCart from '../../components/AddToCart';
 
-export default function ProductDetailPage() {
+const ProductDetailPage = () => {
   const [product, images] = useProductDetail();
 
   return (
@@ -79,4 +79,5 @@ export default function ProductDetailPage() {
       )}
     </>
   );
-}
+};
+export default ProductDetailPage;

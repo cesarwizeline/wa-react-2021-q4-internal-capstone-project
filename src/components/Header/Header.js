@@ -12,7 +12,7 @@ import CartContext from '../../context/CartContext';
 import { HiShoppingCart } from 'react-icons/hi';
 import { ImMenu } from 'react-icons/im';
 import { Link } from 'react-router-dom';
-export default function Header() {
+const Header = () => {
   const { changeShowMenu } = useContext(ThemeContext);
   const { cart } = useContext(CartContext);
   return (
@@ -35,4 +35,6 @@ export default function Header() {
       </HeaderMenu>
     </HeaderContainer>
   );
-}
+};
+
+export default Header;

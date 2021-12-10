@@ -1,47 +1,37 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CartContext from '../context/CartContext';
+import CartContext from '../../context/CartContext';
 import {
   ShoppingCartContent,
   TableProducts,
   TableResume,
-  Flex1,
   DeleteButton,
   ProductsRow,
   RowElement,
   ShoppingCartTitle,
 } from './ShoppingCartPage.styles';
-import QuantitySelector from '../components/QuantitySelector';
-import { Button } from '../utils/main.styles';
+import QuantitySelector from '../../components/QuantitySelector';
+import { Button } from '../../utils/main.styles';
 import { TiDeleteOutline } from 'react-icons/ti';
 const ShoppingCartPage = () => {
   const navigate = useNavigate();
 
   const { cart, removeProduct, increase, decrease } = useContext(CartContext);
 
-  const total = (
-    cart.length > 0
-      ? cart.reduce((prev, next) => {
-          return prev + next.price * next.quantity;
-        }, 0)
-      : 0
-  ).toFixed(2);
-
   return (
     <>
       <ShoppingCartTitle>Shopping Cart </ShoppingCartTitle>
       <ShoppingCartContent>
-        <Flex1>&nbsp;</Flex1>
         <TableProducts>
           <ProductsRow>
             <RowElement>&nbsp;</RowElement>
             <RowElement>&nbsp;</RowElement>
             <RowElement>Name</RowElement>
-            <RowElement>Quantity</RowElement>
+            <RowElement className={'center'}>Quantity</RowElement>
             <RowElement>Price</RowElement>
           </ProductsRow>
 
-          {cart.map((product) => {
+          {cart.products.map((product) => {
             return (
               <ProductsRow key={product.id}>
                 <RowElement>
@@ -77,7 +67,7 @@ const ShoppingCartPage = () => {
         </TableProducts>
 
         <TableResume>
-          {` CART TOTAL : $ ${total} `}
+          {` CART TOTAL : $ ${cart.total} `}
           <Button
             onClick={() => {
               navigate('/products');
@@ -94,7 +84,6 @@ const ShoppingCartPage = () => {
             Proceed to checkout
           </Button>
         </TableResume>
-        <Flex1>&nbsp;</Flex1>
       </ShoppingCartContent>
     </>
   );

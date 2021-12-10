@@ -1,13 +1,19 @@
-import Home from './pages/HomePage';
-import Products from './pages/ProductsPage';
-import ProductDetail from './pages/ProductDetailPage';
+import Home from './pages/HomePage/HomePage';
+import NotFound from './pages/NotFoundPage/NotFoundPage';
+import Products from './pages/ProductsPage/ProductsPage';
+import ProductDetail from './pages/ProductDetailPage/ProductDetailPage';
 import ShoppingCart from './pages/ShoppingCartPage';
-import Checkout from './pages/CheckoutPage';
+import Checkout from './pages/CheckoutPage/CheckoutPage';
 export const routes = [
   {
     name: 'Home',
     path: '/',
     element: Home,
+  },
+  {
+    name: 'Not Found',
+    path: '*',
+    element: NotFound,
   },
   {
     name: 'Home',

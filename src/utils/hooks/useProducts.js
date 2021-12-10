@@ -15,7 +15,6 @@ export const useProducts = (categoriesSelected = []) => {
 
   const response = useApi('product', 12, page);
   const productsResponse = response?.data.results;
-  // const isLoading = response.isLoading;
   useEffect(() => {
     isMounted.current = true;
     setIsLoading(response.isLoading);

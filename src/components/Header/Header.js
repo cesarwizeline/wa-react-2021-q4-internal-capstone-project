@@ -14,7 +14,7 @@ import { ImMenu } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 export default function Header() {
   const { changeShowMenu } = useContext(ThemeContext);
-  const { productQuantity } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   return (
     <HeaderContainer>
       <HeaderMenu>
@@ -29,7 +29,7 @@ export default function Header() {
         </MenuItem>
         <MenuItem>
           <Link to={'/cart'}>
-            <HiShoppingCart /> ({productQuantity})
+            <HiShoppingCart /> ({cart.products.length})
           </Link>
         </MenuItem>
       </HeaderMenu>

@@ -1,10 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useApi } from './useApi';
+import { useLocation } from 'react-router';
 
-export const useProductCategories = (categoryFromURL) => {
+export const useProductCategories = () => {
+  const search = useLocation().search;
+  const categoryFromURL = new URLSearchParams(search).get('category');
+
   const [categoriesSelected, setCategoriesSelected] = useState([]);
   const response = useApi('category', 12, 1);
   const [categories, setCategories] = useState([]);
+  const selectCategoryHandler = (categoryId) => {
+    setCategories((currentCategories) => {
+      return currentCategories.map((category) => {
+        if (category.id === categoryId) {
+          return { ...category, isSelected: !category.isSelected };
+        }
+        return category;
+      });
+    });
+  };
+
   useEffect(() => {
     if (!response.isLoading) {
       const categoryFilter = response?.data?.results.find((category) =>
@@ -28,5 +43,5 @@ export const useProductCategories = (categoryFromURL) => {
     setCategoriesSelected([...filteredCategories]);
   }, [categories]);
 
-  return [categories, categoriesSelected, setCategories];
+  return [categories, categoriesSelected, selectCategoryHandler];
 };

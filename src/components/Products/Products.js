@@ -12,7 +12,7 @@ export default function Products({ categoriesSelected }) {
       {!isLoading && products.length === 0 && 'No products found :( '}
       {products &&
         products.map((product) => {
-          return <ProductCard product={product} />;
+          return <ProductCard key={product.id} product={product} />;
         })}
       <Pagination totalPages={totalPages} />
     </ProductList>

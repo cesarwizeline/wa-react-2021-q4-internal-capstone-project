@@ -7,58 +7,78 @@ const ACTIONS = {
   DELETE: 'DELETE',
 };
 
+const getTotalPrice = (cart) => {
+  return (
+    cart.products.length > 0
+      ? cart.products.reduce((prev, next) => {
+          return prev + next.price * next.quantity;
+        }, 0)
+      : 0
+  ).toFixed(2);
+};
+
 const reducer = (cart, actions) => {
+  let newCart = { ...cart };
   switch (actions.type) {
     case ACTIONS.ADD:
-      return [...cart, actions.product];
+      newCart.products = [...newCart.products, actions.product];
+      newCart.total = getTotalPrice(newCart);
+      return newCart;
+
     case ACTIONS.EDIT:
-      console.log('entra edit');
-      return [...cart].map((product) => {
+      newCart.products = newCart.products.map((product) => {
         if (product.id === actions.product.id) {
           return { ...product, quantity: actions.product.quantity };
         }
         return product;
       });
+      newCart.total = getTotalPrice(newCart);
+      return newCart;
 
     case ACTIONS.DELETE:
-      let newCart = cart.filter((product) => product.id !== actions.productId);
+      newCart.products = cart.products.filter(
+        (product) => product.id !== actions.productId
+      );
+      newCart.total = getTotalPrice(newCart);
       return newCart;
+
     case ACTIONS.INCREASE:
-      return [...cart].map((product) => {
+      newCart.products = newCart.products.map((product) => {
         if (product.id === actions.productId) {
           return { ...product, quantity: product.quantity + 1 };
         }
         return product;
       });
+      newCart.total = getTotalPrice(newCart);
+      return newCart;
+
     case ACTIONS.DECREASE:
-      return [...cart].map((product) => {
+      newCart.products = newCart.products.map((product) => {
         if (product.id === actions.productId) {
           return { ...product, quantity: product.quantity - 1 };
         }
         return product;
       });
+      newCart.total = getTotalPrice(newCart);
+      return newCart;
 
     default:
-      return cart;
+      return newCart;
   }
 };
 
 const initializer = (key) => {
-  if (!localStorage.getItem(key)) return [];
+  if (!localStorage.getItem(key)) return { products: [], total: 0 };
   return JSON.parse(localStorage.getItem(key));
 };
 
 const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
-  const isMounted = useRef(null);
   const [cart, dispatchCart] = useReducer(reducer, initializer('cart'));
 
   useEffect(() => {
-    isMounted.current = true;
-
-    if (isMounted.current) localStorage.setItem('cart', JSON.stringify(cart));
-    return () => (isMounted.current = false);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
   const addProduct = (product, quantity) => {
@@ -70,8 +90,7 @@ export const CartContextProvider = ({ children }) => {
       stock: product.data.stock,
       quantity: quantity,
     };
-    const productInCart = cart.find((prod) => prod.id === product.id);
-
+    const productInCart = cart.products.find((prod) => prod.id === product.id);
     const productObject = {
       type: ACTIONS.ADD,
       product: newProduct,
@@ -105,7 +124,6 @@ export const CartContextProvider = ({ children }) => {
 
   const context = {
     addProduct: addProduct,
-    productQuantity: cart.length,
     cart: cart,
     removeProduct: removeProduct,
     increase: increase,

@@ -8,7 +8,6 @@ import {
 import AddToCart from '../AddToCart';
 
 export default function ProductCard({ product }) {
-  console.log(product);
   const {
     id,
     data: { name, mainimage, category, price, stock },

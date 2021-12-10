@@ -6,7 +6,7 @@ import QuantitySelector from '../QuantitySelector';
 export const AddToCart = ({ product, maxQuantity = 1 }) => {
   const { addProduct } = useContext(CartContext);
 
-  const [reduceHandler, increaseHandler, quantity] = useAddToCart(1);
+  const [reduceHandler, increaseHandler, quantity] = useAddToCart();
 
   return (
     <>

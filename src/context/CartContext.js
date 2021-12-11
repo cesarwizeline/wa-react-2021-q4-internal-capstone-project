@@ -123,11 +123,11 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const context = {
-    addProduct: addProduct,
-    cart: cart,
-    removeProduct: removeProduct,
-    increase: increase,
-    decrease: decrease,
+    addProduct,
+    cart,
+    removeProduct,
+    increase,
+    decrease,
   };
   return (
     <CartContext.Provider value={context}>{children}</CartContext.Provider>

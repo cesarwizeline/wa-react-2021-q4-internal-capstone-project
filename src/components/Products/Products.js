@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProductCard from '../ProductCard';
 import { ProductList } from './Products.styles';
 import Pagination from '../Pagination';
@@ -18,3 +19,7 @@ export default function Products({ categoriesSelected }) {
     </ProductList>
   );
 }
+
+Products.propTypes = {
+  categoriesSelected: PropTypes.array,
+};

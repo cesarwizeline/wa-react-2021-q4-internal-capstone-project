@@ -1,4 +1,5 @@
-import { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 const ACTIONS = {
   ADD: 'ADD',
   EDIT: 'EDIT',
@@ -138,3 +139,7 @@ export const CartContextProvider = ({ children }) => {
   );
 };
 export default CartContext;
+
+CartContextProvider.propTypes = {
+  children: PropTypes.any,
+};

@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   QuantityButton,
   QuantityInput,
@@ -26,5 +28,9 @@ const QuantitySelector = ({ increaseHandler, reduceHandler, quantity }) => {
     </>
   );
 };
-
+QuantitySelector.propTypes = {
+  increaseHandler: PropTypes.func.isRequired,
+  reduceHandler: PropTypes.func.isRequired,
+  quantity: PropTypes.number.isRequired,
+};
 export default QuantitySelector;

@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { PaginationContent, ButtonNumber } from './Pagination.style';
 import { Link } from 'react-router-dom';
@@ -20,3 +22,10 @@ export default function Pagination({ totalPages }) {
     </PaginationContent>
   );
 }
+// Pagination.defaultProps = {
+//   totalPages: 1,
+// };
+
+Pagination.propTypes = {
+  totalPages: PropTypes.number.isRequired,
+};

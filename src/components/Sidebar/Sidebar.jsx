@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { SidebarContent, SidebarItem } from './Sidebar.style';
 import ThemeContext from '../../context/ThemeContext';
 const Sidebar = ({ onSelectCategory, categories }) => {
@@ -28,5 +29,9 @@ const Sidebar = ({ onSelectCategory, categories }) => {
       </SidebarItem>
     </SidebarContent>
   );
+};
+Sidebar.propTypes = {
+  onSelectCategory: PropTypes.any.isRequired,
+  categories: PropTypes.any.isRequired,
 };
 export default Sidebar;

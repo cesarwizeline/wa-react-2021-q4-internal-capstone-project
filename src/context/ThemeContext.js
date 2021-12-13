@@ -1,4 +1,5 @@
-import { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 const initialState = window.innerWidth > 780;
 const ThemeContext = createContext();
 export const useTheme = () => {
@@ -16,5 +17,8 @@ export const ThemeContextProvider = ({ children }) => {
   return (
     <ThemeContext.Provider value={context}>{children}</ThemeContext.Provider>
   );
+};
+ThemeContextProvider.propTypes = {
+  children: PropTypes.any,
 };
 export default ThemeContext;

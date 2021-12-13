@@ -1,1 +1,1 @@
-export { default } from './QuantitySelector.js';
+export { default } from './QuantitySelector';

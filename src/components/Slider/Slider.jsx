@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Slider.module.css';
 import useBanners from '../../utils/hooks/useBanners';
 export default function Slider() {

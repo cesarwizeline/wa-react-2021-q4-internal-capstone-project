@@ -100,6 +100,10 @@ export const CartContextProvider = ({ children }) => {
     dispatchCart(productObject);
   };
   const increase = (productId) => {
+    const product = cart.products.find((prod) => prod.id === productId);
+
+    if (product.stock >= product.quantity) return;
+
     const productObject = {
       type: ACTIONS.INCREASE,
       productId,

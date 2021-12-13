@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
 import {
@@ -56,8 +56,8 @@ const ShoppingCartPage = () => {
                     reduceHandler={() => decrease(product.id)}
                     increaseHandler={() => increase(product.id)}
                     quantity={product.quantity}
-                    maxQuantity={product.stock}
-                    minQuantity={1}
+                    // maxQuantity={product.stock}
+                    // minQuantity={1}
                   />
                 </RowElement>
                 <RowElement> $ {` ${product.price.toFixed(2)}`} </RowElement>

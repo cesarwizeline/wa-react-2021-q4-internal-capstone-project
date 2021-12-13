@@ -3,30 +3,24 @@ import {
   QuantityInput,
   QtySelectorContent,
 } from './QuantitySelector.styles';
-const QuantitySelector = ({
-  increaseHandler,
-  reduceHandler,
-  quantity,
-  maxQuantity,
-  minQuantity,
-}) => {
+const QuantitySelector = ({ increaseHandler, reduceHandler, quantity }) => {
   return (
     <>
       <QtySelectorContent>
         <QuantityButton
           onClick={() => {
-            quantity > minQuantity && reduceHandler();
+            reduceHandler();
           }}
         >
-          {`-`}
+          -
         </QuantityButton>
         <QuantityInput readOnly value={quantity} />
         <QuantityButton
           onClick={() => {
-            quantity < maxQuantity && increaseHandler();
+            increaseHandler();
           }}
         >
-          {'+'}
+          +
         </QuantityButton>
       </QtySelectorContent>
     </>

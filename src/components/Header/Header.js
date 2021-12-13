@@ -6,13 +6,15 @@ import {
   MenuItem,
   ShowMenuBtn,
 } from './Header.styles';
-import SearchInput from './SearchInput';
-import ThemeContext from '../context/ThemeContext';
+import SearchInput from '../SearchInput';
+import ThemeContext from '../../context/ThemeContext';
+import CartContext from '../../context/CartContext';
 import { HiShoppingCart } from 'react-icons/hi';
 import { ImMenu } from 'react-icons/im';
 import { Link } from 'react-router-dom';
-export default function Header() {
+const Header = () => {
   const { changeShowMenu } = useContext(ThemeContext);
+  const { cart } = useContext(CartContext);
   return (
     <HeaderContainer>
       <HeaderMenu>
@@ -26,9 +28,13 @@ export default function Header() {
           <SearchInput />
         </MenuItem>
         <MenuItem>
-          <HiShoppingCart />
+          <Link to={'/cart'}>
+            <HiShoppingCart /> ({cart.products.length})
+          </Link>
         </MenuItem>
       </HeaderMenu>
     </HeaderContainer>
   );
-}
+};
+
+export default Header;

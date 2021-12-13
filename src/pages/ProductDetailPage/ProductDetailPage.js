@@ -1,4 +1,4 @@
-import useProductDetail from '../utils/hooks/useProductDetail';
+import useProductDetail from '../../utils/hooks/useProductDetail';
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import {
@@ -14,9 +14,9 @@ import {
   ProductSpecs,
   ProductCategory,
 } from './ProductDetailPage.style';
-import AddToCart from '../components/AddToCart';
+import AddToCart from '../../components/AddToCart';
 
-export default function ProductDetailPage() {
+const ProductDetailPage = () => {
   const [product, images] = useProductDetail();
 
   return (
@@ -71,10 +71,13 @@ export default function ProductDetailPage() {
 
           <ProductActions>
             <InStock>{`In Stock (${product?.data?.stock} pieces) `} </InStock>
-            <AddToCart productId={product?.id} />
+            {product?.data?.stock > 0 && (
+              <AddToCart maxQuantity={product?.data?.stock} product={product} />
+            )}
           </ProductActions>
         </ProductDetailPageContent>
       )}
     </>
   );
-}
+};
+export default ProductDetailPage;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SidebarContent, SidebarItem } from './Sidebar.style';
-import ThemeContext from '../context/ThemeContext';
+import ThemeContext from '../../context/ThemeContext';
 const Sidebar = ({ onSelectCategory, categories }) => {
   const { showMenu } = useContext(ThemeContext);
   const selectCategoryHandler = (categoryId) => {

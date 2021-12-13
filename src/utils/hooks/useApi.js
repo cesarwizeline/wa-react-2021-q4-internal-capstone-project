@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-export function useApi(documentType, elementsPerPage = 10, page = 1) {
+export function useApi(
+  documentType,
+  elementsPerPage = 10,
+  page = 1,
+  productToSearch = ''
+) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [response, setResponse] = useState(() => ({
     data: {},
@@ -15,15 +20,14 @@ export function useApi(documentType, elementsPerPage = 10, page = 1) {
     }
 
     const controller = new AbortController();
-
+    // const productToSearch = '';
     async function getDocumentType() {
       try {
         setResponse({ data: {}, isLoading: true });
-
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
             '[[at(document.type, "' + documentType + '")]]'
-          )}&lang=en-us&pageSize=${elementsPerPage}&page=${page}`,
+          )}&lang=en-us&pageSize=${elementsPerPage}&page=${page}&q=[[fulltext(document, "${productToSearch}")]]`,
           {
             signal: controller.signal,
           }
@@ -42,7 +46,14 @@ export function useApi(documentType, elementsPerPage = 10, page = 1) {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading, documentType, elementsPerPage, page]);
+  }, [
+    apiRef,
+    isApiMetadataLoading,
+    documentType,
+    elementsPerPage,
+    page,
+    productToSearch,
+  ]);
 
   return response;
 }

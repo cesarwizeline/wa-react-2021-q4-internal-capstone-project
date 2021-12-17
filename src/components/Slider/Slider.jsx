@@ -1,24 +1,24 @@
 import React from 'react';
-import styles from './Slider.module.css';
-import useBanners from '../../utils/hooks/useBanners';
+import { SliderContent, Slide } from './Slider.styles.js';
+import { useBanners } from '../../utils/hooks/useBanners';
 export default function Slider() {
   const [imageSelected, featuredBanners] = useBanners();
 
   const getSlideStyles = (index) => {
-    if (index === imageSelected) return [styles.active, styles.slide];
-    return styles.slide;
+    if (index === imageSelected) return ['active', 'slide'];
+    return 'slide';
   };
 
   return (
-    <section className={styles.slider}>
+    <SliderContent>
       {featuredBanners &&
         featuredBanners.map(({ id, data: { main_image } }, index) => {
           return (
-            <div className={getSlideStyles(index)} key={id}>
-              <img className={styles.image} src={main_image.url} alt={id} />
-            </div>
+            <Slide className={getSlideStyles(index)} key={id}>
+              <img className="image" src={main_image.url} alt={id} />
+            </Slide>
           );
         })}
-    </section>
+    </SliderContent>
   );
 }

@@ -5,6 +5,7 @@ import {
   MenuLogo,
   MenuItem,
   ShowMenuBtn,
+  ProductsQuantityCart,
 } from './Header.styles';
 import SearchInput from '../SearchInput';
 import ThemeContext from '../../context/ThemeContext';
@@ -21,15 +22,21 @@ const Header = () => {
         <ShowMenuBtn>
           <ImMenu onClick={changeShowMenu} />
         </ShowMenuBtn>
+
         <MenuLogo>
           <Link to="/"> Logo </Link>
         </MenuLogo>
-        <MenuItem>
+
+        <MenuItem className="searcher">
           <SearchInput />
         </MenuItem>
+
         <MenuItem>
           <Link to={'/cart'}>
-            <HiShoppingCart /> ({cart.products.length})
+            <span style={{ fontSize: '20px' }}>
+              <HiShoppingCart />
+            </span>
+            <ProductsQuantityCart>{cart.products.length}</ProductsQuantityCart>
           </Link>
         </MenuItem>
       </HeaderMenu>

@@ -1,10 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  InputText,
-  TextArea,
-  Form,
-  CheckoutPageContent,
-} from './CheckoutPage.styles';
+import { Form, CheckoutPageContent } from './CheckoutPage.styles';
 import { Button } from '../../utils/main.styles';
 import { useNavigate } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
@@ -13,6 +8,7 @@ import {
   ProductsRow,
   RowElement,
 } from '../ShoppingCartPage/ShoppingCartPage.styles';
+import InputText from '../../components/InputText';
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const { cart } = useContext(CartContext);
@@ -20,21 +16,10 @@ const CheckoutPage = () => {
   return (
     <CheckoutPageContent>
       <Form>
-        Name
-        <br />
-        <InputText />
-        <br />
-        Email
-        <br />
-        <InputText />
-        <br />
-        post/zip
-        <br />
-        <InputText />
-        <br />
-        Order Notes
-        <br />
-        <TextArea></TextArea>
+        <InputText title="Name" />
+        <InputText title="Email" />
+        <InputText title="post/zip" />
+        <InputText type="textarea" title="Order Notes" />
       </Form>
       <TableProducts>
         <ProductsRow>

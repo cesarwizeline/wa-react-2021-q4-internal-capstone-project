@@ -5,14 +5,19 @@ import { ProductPageContent } from './ProductPage.style';
 import { useProductCategories } from '../../utils/hooks/useProductCategories';
 
 const ProductsPage = () => {
-  const [categories, categoriesSelected, selectCategoryHandler] =
-    useProductCategories();
+  const [
+    categories,
+    categoriesSelected,
+    selectCategoryHandler,
+    clearCategoriesHandler,
+  ] = useProductCategories();
 
   return (
     <ProductPageContent>
       <Sidebar
         categories={categories}
         onSelectCategory={selectCategoryHandler}
+        onClearCategories={clearCategoriesHandler}
       />
       <Products categoriesSelected={categoriesSelected} />
     </ProductPageContent>

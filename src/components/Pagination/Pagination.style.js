@@ -5,9 +5,18 @@ export const PaginationContent = styled.div`
   width: 100%;
   a {
     color: gray;
+
+    svg {
+      color: gray;
+      position: relative;
+      top: 4px;
+    }
   }
   &a:hover {
     text-decoration: none;
+  }
+  svg {
+    color: #ddd;
   }
 `;
 export const ButtonNumber = styled.button`

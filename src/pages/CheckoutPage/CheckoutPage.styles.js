@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
 export const CheckoutPageContent = styled.div`
-  align-self: center;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 768px) {
+    grid-template-columns: none;
+  }
+`;
+export const ProductsSIde = styled.div`
+  grid-column: 2;
+  display: grid;
+`;
+export const CheckoutActions = styled.div`
+  grid-column: 1;
 `;
 
 export const Form = styled.form`
-  width: 1200px;
-  align-self: center;
+  width: 400px;
   margin: 20px;
   padding: 20px;
   @media (max-width: 768px) {

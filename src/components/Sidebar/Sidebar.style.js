@@ -6,11 +6,11 @@ export const SidebarContent = styled.nav`
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
+    width: 80%;
     left: -100%;
     position: fixed;
     z-index: 9;
     height: 100vh;
-    height: auto;
     background-color: #ccc;
     &.active {
       left: 0;
@@ -21,6 +21,7 @@ export const SidebarContent = styled.nav`
 
 export const SidebarItem = styled.div`
   padding: 15px 10px;
+  max-width: 100%;
   margin-left: 30px;
   &:hover {
     cursor: pointer;

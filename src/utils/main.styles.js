@@ -15,3 +15,7 @@ export const Button = styled.button`
     background-color: #009137;
   }
 `;
+
+export const Title = styled.h1`
+  text-align: center;
+`;

@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { SidebarContent, SidebarItem } from './Sidebar.style';
 import ThemeContext from '../../context/ThemeContext';
-const Sidebar = ({ onSelectCategory, categories }) => {
+const Sidebar = ({ onSelectCategory, categories, onClearCategories }) => {
   const { showMenu } = useContext(ThemeContext);
-  const selectCategoryHandler = (categoryId) => {
-    onSelectCategory(categoryId);
-  };
-  const clearCategories = () => {};
 
   return (
     <SidebarContent className={showMenu && 'active'}>
@@ -17,16 +14,25 @@ const Sidebar = ({ onSelectCategory, categories }) => {
       </SidebarItem>
       {categories.map(({ id, isSelected, data: { name } }) => {
         return (
-          <SidebarItem key={id} onClick={() => selectCategoryHandler(id)}>
+          <SidebarItem
+            data-testid={id}
+            key={id}
+            onClick={() => onSelectCategory(id)}
+          >
             <input type="checkbox" readOnly={true} checked={isSelected} />
             {` ${name}`}
           </SidebarItem>
         );
       })}
-      <SidebarItem key={9} onClick={() => clearCategories()}>
+      <SidebarItem key={9} onClick={() => onClearCategories()}>
         Clear categories
       </SidebarItem>
     </SidebarContent>
   );
+};
+Sidebar.propTypes = {
+  onSelectCategory: PropTypes.any.isRequired,
+  onClearCategories: PropTypes.any.isRequired,
+  categories: PropTypes.any.isRequired,
 };
 export default Sidebar;

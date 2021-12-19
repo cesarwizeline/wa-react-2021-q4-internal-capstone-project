@@ -20,6 +20,14 @@ export const useProductCategories = () => {
     });
   };
 
+  const clearCategoriesHandler = () => {
+    setCategories((currentCategories) => {
+      return currentCategories.map((category) => {
+        return { ...category, isSelected: false };
+      });
+    });
+  };
+
   useEffect(() => {
     if (!response.isLoading) {
       const categoryFilter = response?.data?.results.find((category) =>
@@ -43,5 +51,10 @@ export const useProductCategories = () => {
     setCategoriesSelected([...filteredCategories]);
   }, [categories]);
 
-  return [categories, categoriesSelected, selectCategoryHandler];
+  return [
+    categories,
+    categoriesSelected,
+    selectCategoryHandler,
+    clearCategoriesHandler,
+  ];
 };

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Category = styled.div`
   padding: 15px;
+  font-family: italic;
+  font-size: 19px;
+  text-transform: uppercase;
   &:hover {
     cursor: pointer;
     background-color: #111;

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchInputContent, SearchButton } from './SearchInput.styles';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { useLocation } from 'react-router';
 const SearchInput = () => {
   const search = useLocation().search;
-  const productToSearch = new URLSearchParams(search).get('q') ?? null;
+  const productToSearch = new URLSearchParams(search).get('q') ?? '';
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState(productToSearch);
 

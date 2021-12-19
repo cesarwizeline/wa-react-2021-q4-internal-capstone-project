@@ -9,6 +9,7 @@ import {
   ProductsRow,
   RowElement,
   ShoppingCartTitle,
+  CheckoutLabels,
 } from './ShoppingCartPage.styles';
 import QuantitySelector from '../../components/QuantitySelector';
 import { Button } from '../../utils/main.styles';
@@ -45,7 +46,7 @@ const ShoppingCartPage = () => {
                 </RowElement>
                 <RowElement>
                   <img
-                    style={{ width: '120px' }}
+                    style={{ width: '110px' }}
                     src={product.image}
                     alt={product.name}
                   />
@@ -67,7 +68,7 @@ const ShoppingCartPage = () => {
         </TableProducts>
 
         <TableResume>
-          {` CART TOTAL : $ ${cart.total} `}
+          <CheckoutLabels>{`TOTAL : $ ${cart.total} `}</CheckoutLabels>
           <Button
             onClick={() => {
               navigate('/products');

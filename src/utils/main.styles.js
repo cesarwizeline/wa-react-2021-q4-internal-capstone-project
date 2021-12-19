@@ -5,7 +5,7 @@ export const Button = styled.button`
   outline: 0;
   padding: 12px;
   color: white;
-  background-color: red;
+  background-color: #3e3e3e;
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -14,4 +14,8 @@ export const Button = styled.button`
   &.success {
     background-color: #009137;
   }
+`;
+
+export const Title = styled.h1`
+  text-align: center;
 `;

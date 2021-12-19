@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useFeaturedBanners } from './useFeaturedBanners';
-const useBanners = () => {
+export const useBanners = () => {
   const isMounted = useRef(null);
   const [imageSelected, setImageSelected] = useState(0);
   const response = useFeaturedBanners();
@@ -37,4 +37,4 @@ const useBanners = () => {
   return [imageSelected, featuredBanners];
 };
 
-export default useBanners;
+// export default useBanners;

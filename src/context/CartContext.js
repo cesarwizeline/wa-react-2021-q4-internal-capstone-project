@@ -1,4 +1,5 @@
-import { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 const ACTIONS = {
   ADD: 'ADD',
   EDIT: 'EDIT',
@@ -101,8 +102,7 @@ export const CartContextProvider = ({ children }) => {
   };
   const increase = (productId) => {
     const product = cart.products.find((prod) => prod.id === productId);
-
-    if (product.stock >= product.quantity) return;
+    if (product.stock <= product.quantity) return;
 
     const productObject = {
       type: ACTIONS.INCREASE,
@@ -111,6 +111,8 @@ export const CartContextProvider = ({ children }) => {
     dispatchCart(productObject);
   };
   const decrease = (productId) => {
+    const product = cart.products.find((prod) => prod.id === productId);
+    if (product.quantity === 1) return;
     const productObject = {
       type: ACTIONS.DECREASE,
       productId,
@@ -138,3 +140,7 @@ export const CartContextProvider = ({ children }) => {
   );
 };
 export default CartContext;
+
+CartContextProvider.propTypes = {
+  children: PropTypes.any,
+};

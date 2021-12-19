@@ -14,24 +14,18 @@ export const TableProducts = styled.div`
   display: grid;
   align-items: center;
   align-content: center;
+  text-align: center;
 `;
 export const ProductsRow = styled.div`
-  padding: 20px;
+  padding: 10px 20px;
   display: grid;
   max-width: 1100px;
   grid-template-columns: 5% 20% 35% 25% 15%;
 
   @media (max-width: 768px) {
-    flex: 12;
-    max-width: 100%;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 10% 40% 50%;
-      grid-auto-columns: 1fr;
-      grid-template-areas:
-        'remove image name'
-        '.. .. actions price';
-    }
+    text-align: center;
+    grid-template-columns: none;
+    border-bottom: 1px solid gray;
   }
 `;
 export const RowElement = styled.div`
@@ -42,7 +36,6 @@ export const RowElement = styled.div`
 `;
 export const TableResume = styled.div`
   padding: 20px;
-  flex: 2;
 `;
 
 export const DeleteButton = styled.div`
@@ -50,4 +43,11 @@ export const DeleteButton = styled.div`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const CheckoutLabels = styled.span`
+  margin: 0px 20px;
+  font-size: 23px;
+  font-weight: bold;
+  color: #535353;
 `;

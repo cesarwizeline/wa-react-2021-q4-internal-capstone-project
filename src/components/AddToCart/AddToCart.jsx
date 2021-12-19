@@ -1,4 +1,6 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import { AddToCartButton } from './AddToCart.styles.js';
 import useAddToCart from '../../utils/hooks/useAddToCart';
 import CartContext from '../../context/CartContext';
@@ -24,5 +26,8 @@ export const AddToCart = ({ product, maxQuantity = 1 }) => {
     </>
   );
 };
-
+AddToCart.propTypes = {
+  product: PropTypes.object,
+  maxQuantity: PropTypes.number,
+};
 export default AddToCart;
